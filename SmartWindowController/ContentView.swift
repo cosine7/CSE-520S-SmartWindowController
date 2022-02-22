@@ -8,9 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isOn = true
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            Form {
+                Section {
+                    HStack {
+                        Toggle(isOn: $isOn) {
+                            Text("window1")
+                        }
+                    }
+                }
+            }.navigationTitle("Welcome")
+        }
     }
 }
 
