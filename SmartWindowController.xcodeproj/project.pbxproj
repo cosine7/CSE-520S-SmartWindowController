@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F9C6C8386D7567A5D0A34B2 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = C6969859055C9B8BE92779E1 /* amplifyconfiguration.json */; };
+		2B7E06C6E1D2F5FD9A9DBCED /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F0B9A024FDD7ECC7A588A90 /* awsconfiguration.json */; };
 		50FD7C6027C5A5D20034CA18 /* SmartWindowControllerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FD7C5F27C5A5D20034CA18 /* SmartWindowControllerApp.swift */; };
 		50FD7C6227C5A5D20034CA18 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FD7C6127C5A5D20034CA18 /* ContentView.swift */; };
 		50FD7C6427C5A5D30034CA18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50FD7C6327C5A5D30034CA18 /* Assets.xcassets */; };
@@ -14,11 +16,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F0B9A024FDD7ECC7A588A90 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; lastKnownFileType = text.json; name = awsconfiguration.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		50FD7C5C27C5A5D20034CA18 /* SmartWindowController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartWindowController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50FD7C5F27C5A5D20034CA18 /* SmartWindowControllerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartWindowControllerApp.swift; sourceTree = "<group>"; };
 		50FD7C6127C5A5D20034CA18 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		50FD7C6327C5A5D30034CA18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50FD7C6627C5A5D30034CA18 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C6969859055C9B8BE92779E1 /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; lastKnownFileType = text.json; name = amplifyconfiguration.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,11 +36,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		19FD046CBA180670180FBD00 /* AmplifyConfig */ = {
+			isa = PBXGroup;
+			children = (
+				1F0B9A024FDD7ECC7A588A90 /* awsconfiguration.json */,
+				C6969859055C9B8BE92779E1 /* amplifyconfiguration.json */,
+			);
+			name = AmplifyConfig;
+			sourceTree = "<group>";
+		};
 		50FD7C5327C5A5D20034CA18 = {
 			isa = PBXGroup;
 			children = (
 				50FD7C5E27C5A5D20034CA18 /* SmartWindowController */,
 				50FD7C5D27C5A5D20034CA18 /* Products */,
+				19FD046CBA180670180FBD00 /* AmplifyConfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,6 +141,8 @@
 			files = (
 				50FD7C6727C5A5D30034CA18 /* Preview Assets.xcassets in Resources */,
 				50FD7C6427C5A5D30034CA18 /* Assets.xcassets in Resources */,
+				2B7E06C6E1D2F5FD9A9DBCED /* awsconfiguration.json in Resources */,
+				1F9C6C8386D7567A5D0A34B2 /* amplifyconfiguration.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

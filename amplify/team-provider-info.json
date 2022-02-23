@@ -1,0 +1,15 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-smartwindowcontrolle-staging-233434-authRole",
+      "UnauthRoleArn": "arn:aws:iam::668284928151:role/amplify-smartwindowcontrolle-staging-233434-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::668284928151:role/amplify-smartwindowcontrolle-staging-233434-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-smartwindowcontrolle-staging-233434-deployment",
+      "UnauthRoleName": "amplify-smartwindowcontrolle-staging-233434-unauthRole",
+      "StackName": "amplify-smartwindowcontrolle-staging-233434",
+      "StackId": "arn:aws:cloudformation:us-east-2:668284928151:stack/amplify-smartwindowcontrolle-staging-233434/fe10f8c0-9437-11ec-8321-02183ae6bad4",
+      "AmplifyAppId": "d502pw3rm6uaw"
+    }
+  }
+}
