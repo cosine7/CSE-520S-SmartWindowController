@@ -23,8 +23,10 @@ struct ContentView: View {
                         Text("window1")
                     }
                 }
-            }.navigationTitle("Welcome")
+            }
+            .navigationTitle("Welcome")
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
