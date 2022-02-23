@@ -6,10 +6,6 @@
 //
 
 import SwiftUI
-import AWSIoT
-import Amplify
-import AWSMobileClient
-import AmplifyPlugins
 
 struct ContentView: View {
     @State private var isOn = true
