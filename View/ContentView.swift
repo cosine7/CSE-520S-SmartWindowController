@@ -8,16 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var isOn = true
-    @StateObject private var iot = IOT()
+    @StateObject private var window = IoTDevice()
 
     var body: some View {
         NavigationView {
             Form {
                 Section {
-                    Toggle(isOn: $isOn) {
-                        Text("window1")
-                    }
+                    Toggle("window1", isOn: $window.isOpen)
                 }
             }
             .navigationTitle("Welcome")
