@@ -6,18 +6,21 @@
 //
 
 import SwiftUI
+import AWSIoT
+import Amplify
+import AWSMobileClient
+import AmplifyPlugins
 
 struct ContentView: View {
     @State private var isOn = true
-    
+    @StateObject private var iot = IOT()
+
     var body: some View {
         NavigationView {
             Form {
                 Section {
-                    HStack {
-                        Toggle(isOn: $isOn) {
-                            Text("window1")
-                        }
+                    Toggle(isOn: $isOn) {
+                        Text("window1")
                     }
                 }
             }.navigationTitle("Welcome")
