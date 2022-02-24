@@ -10,6 +10,7 @@
 		1F9C6C8386D7567A5D0A34B2 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = C6969859055C9B8BE92779E1 /* amplifyconfiguration.json */; };
 		2B7E06C6E1D2F5FD9A9DBCED /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F0B9A024FDD7ECC7A588A90 /* awsconfiguration.json */; };
 		502E699227C62EAC00F42D30 /* AWSIoT in Frameworks */ = {isa = PBXBuildFile; productRef = 502E699127C62EAC00F42D30 /* AWSIoT */; };
+		5068A14E27C6FC9A00E69AF1 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5068A14D27C6FC9A00E69AF1 /* Status.swift */; };
 		50FD7C6027C5A5D20034CA18 /* SmartWindowControllerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FD7C5F27C5A5D20034CA18 /* SmartWindowControllerApp.swift */; };
 		50FD7C6227C5A5D20034CA18 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FD7C6127C5A5D20034CA18 /* ContentView.swift */; };
 		50FD7C6427C5A5D30034CA18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50FD7C6327C5A5D30034CA18 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		1F0B9A024FDD7ECC7A588A90 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
+		5068A14D27C6FC9A00E69AF1 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		50FD7C5C27C5A5D20034CA18 /* SmartWindowController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartWindowController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50FD7C5F27C5A5D20034CA18 /* SmartWindowControllerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartWindowControllerApp.swift; sourceTree = "<group>"; };
 		50FD7C6127C5A5D20034CA18 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -65,9 +67,18 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		5068A14C27C6FC6D00E69AF1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5068A14D27C6FC9A00E69AF1 /* Status.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		50FD7C5327C5A5D20034CA18 = {
 			isa = PBXGroup;
 			children = (
+				5068A14C27C6FC6D00E69AF1 /* Model */,
 				5068A14B27C6E61F00E69AF1 /* ViewModel */,
 				5068A14A27C6E61400E69AF1 /* View */,
 				50FD7C5E27C5A5D20034CA18 /* SmartWindowController */,
@@ -183,6 +194,7 @@
 				50FD7C6227C5A5D20034CA18 /* ContentView.swift in Sources */,
 				50FD7C8027C6077B0034CA18 /* IoTDevice.swift in Sources */,
 				50FD7C6027C5A5D20034CA18 /* SmartWindowControllerApp.swift in Sources */,
+				5068A14E27C6FC9A00E69AF1 /* Status.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

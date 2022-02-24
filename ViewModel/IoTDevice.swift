@@ -9,17 +9,14 @@ import Foundation
 import AWSIoT
 
 class IoTDevice: ObservableObject {
-    @Published var isOpen: Bool {
-        didSet {
-            publishTopic(isOpen)
-        }
-    }
-    private let iotDataManager: AWSIoTDataManager
+    @Published var isOpen = false
+    @Published var status = Status(isRaining: false, temperature: 0, windowAngle: 0, humidity: 0)
+    
+    let iotDataManager: AWSIoTDataManager
     private let iot: AWSIoT
     private let iotManager: AWSIoTManager
     
     init() {
-        isOpen = true
         let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USEast2,
            identityPoolId:"us-east-2:d7fe918e-a665-4602-af6f-108f1ea04286")
         let configuration = AWSServiceConfiguration(region:.USEast2, credentialsProvider:credentialsProvider)
@@ -44,50 +41,50 @@ class IoTDevice: ObservableObject {
         ]
         self.iotManager.createKeysAndCertificate(fromCsr: csrDictionary) {
             response -> Void in
-            guard let response = response else {
+            guard let response = response,
+                  let attachPrincipalPolicyRequest = AWSIoTAttachPrincipalPolicyRequest()
+            else {
                 print("fail============================")
                 return
             }
-            let attachPrincipalPolicyRequest = AWSIoTAttachPrincipalPolicyRequest()
-            attachPrincipalPolicyRequest?.policyName = "testSWAppIOTPolicy"
-            attachPrincipalPolicyRequest?.principal = response.certificateArn
+            attachPrincipalPolicyRequest.policyName = "testSWAppIOTPolicy"
+            attachPrincipalPolicyRequest.principal = response.certificateArn
 
             // Attach the policy to the certificate
-            self.iot.attachPrincipalPolicy(attachPrincipalPolicyRequest!).continueWith (block: { (task) -> AnyObject? in
+            self.iot.attachPrincipalPolicy(attachPrincipalPolicyRequest).continueWith {
+                task -> AnyObject? in
                 if let error = task.error {
                     print("Failed: [\(error)]")
                 } else  {
-                    self.tryToConnect(response.certificateId)
+                    self.connect(response.certificateId)
                 }
                 return nil
-            })
+            }
         }
     }
     
-    func tryToConnect(_ certificateId: String) {
+    func connect(_ certificateId: String) {
         iotDataManager.connect(
             withClientId: UUID().uuidString,
             cleanSession: true,
-            certificateId: certificateId,
-            statusCallback: mqttEventCallback
-        )
-        iotDataManager.subscribe(
-            toTopic: "smart_window",
-            qoS: .messageDeliveryAttemptedAtMostOnce,
-            messageCallback: {
-                (payload) ->Void in
-                let stringValue = NSString(data: payload, encoding: String.Encoding.utf8.rawValue)!
-                print("======================================================")
-                print("Message received: \(stringValue)")
+            certificateId: certificateId
+        ) {
+            status in
+            print("connection status = \(status.rawValue)")
+        }
+        iotDataManager.subscribe(toTopic: "smart_window", qoS: .messageDeliveryAttemptedAtMostOnce) {
+            payload in
+            guard let status = try? JSONDecoder().decode(Status.self, from: payload) else {
+                return
             }
-        )
+            DispatchQueue.main.async {
+                self.status = status
+                self.isOpen = status.windowAngle > 0
+            }
+        }
     }
     
-    func mqttEventCallback(_ status: AWSIoTMQTTStatus ) {
-        print("connection status = \(status.rawValue)")
-    }
-    
-    private func publishTopic(_ needOpen: Bool) {
+    func publishTopic(_ needOpen: Bool) {
         guard let data = try? JSONSerialization.data(withJSONObject: ["needOpen": needOpen]),
               let message = String(data: data, encoding: .utf8)
         else {
