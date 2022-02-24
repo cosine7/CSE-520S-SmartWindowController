@@ -8,8 +8,8 @@
 import Foundation
 
 struct Status: Codable {
-    let isRaining: Bool
-    let temperature: Double?
+    var isRaining: Bool
+    let temperature: Double
     var windowAngle: Double
-    let humidity: Double?
+    let humidity: Double
 }

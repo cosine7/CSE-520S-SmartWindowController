@@ -11,10 +11,12 @@ import AWSIoT
 class IoTDevice: ObservableObject {
     @Published var isOpen = false
     @Published var status = Status(isRaining: false, temperature: 0, windowAngle: 0, humidity: 0)
+    @Published var temperature = ""
     
     let iotDataManager: AWSIoTDataManager
     private let iot: AWSIoT
     private let iotManager: AWSIoTManager
+    
     
     init() {
         let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USEast2,
@@ -79,7 +81,9 @@ class IoTDevice: ObservableObject {
             }
             DispatchQueue.main.async {
                 self.status = status
-                self.isOpen = status.windowAngle > 0
+//                self.isOpen = status.windowAngle > 0
+                self.temperature = "\(status.temperature)\u{00B0}C"
+                
             }
         }
     }

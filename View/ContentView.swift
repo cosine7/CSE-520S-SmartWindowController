@@ -20,8 +20,14 @@ struct ContentView: View {
 //                            window.interrupt()
                             window.publishTopic(!window.isOpen)
                         }
-                    Slider(value: $window.status.windowAngle.animation(), in: 0 ... 90)
-                        .animation(.linear, value: window.status.windowAngle)
+//                    Slider(value: $window.status.windowAngle.animation(), in: 0 ... 90)
+//                        .animation(.linear, value: window.status.windowAngle)
+                    HStack {
+                        Text("Temperature")
+                        Spacer()
+                        Text(window.temperature)
+                    }
+                    
                 }
             }
             .navigationTitle("Welcome")
