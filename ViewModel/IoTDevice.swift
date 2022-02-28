@@ -75,18 +75,18 @@ class IoTDevice: ObservableObject {
             status in
             print("connection status = \(status.rawValue)")
         }
-        iotDataManager.subscribe(toTopic: "smart_window", qoS: .messageDeliveryAttemptedAtMostOnce) {
-            payload in
-            guard let status = try? JSONDecoder().decode(Status.self, from: payload) else {
-                return
-            }
-            DispatchQueue.main.async {
-                self.status = status
-//                self.isOpen = status.windowAngle > 0
-                self.temperature = "\(status.temperature)\u{00B0}C"
-                
-            }
-        }
+//        iotDataManager.subscribe(toTopic: "smart_window", qoS: .messageDeliveryAttemptedAtMostOnce) {
+//            payload in
+//            guard let status = try? JSONDecoder().decode(Status.self, from: payload) else {
+//                return
+//            }
+//            DispatchQueue.main.async {
+//                self.status = status
+////                self.isOpen = status.windowAngle > 0
+//                self.temperature = "\(status.temperature)\u{00B0}C"
+//
+//            }
+//        }
     }
     
     func publishTopic(_ needOpen: Bool) {

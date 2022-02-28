@@ -16,17 +16,17 @@ struct ContentView: View {
                 Section {
                     Toggle("window1", isOn: $window.isOpen)
                         .onTapGesture {
-                            print(window.isOpen)
+//                            print(window.isOpen)
 //                            window.interrupt()
                             window.publishTopic(!window.isOpen)
                         }
 //                    Slider(value: $window.status.windowAngle.animation(), in: 0 ... 90)
 //                        .animation(.linear, value: window.status.windowAngle)
-                    HStack {
-                        Text("Temperature")
-                        Spacer()
-                        Text(window.temperature)
-                    }
+//                    HStack {
+//                        Text("Temperature")
+//                        Spacer()
+//                        Text(window.temperature)
+//                    }
                     
                 }
             }
