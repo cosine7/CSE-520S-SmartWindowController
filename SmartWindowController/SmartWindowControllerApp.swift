@@ -7,11 +7,30 @@
 
 import SwiftUI
 
+class Pre: ObservableObject {
+    @Published var showView = false
+    
+    init() {
+        delay()
+    }
+    
+    private func delay() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
+            self.showView = true
+        }
+    }
+    
+}
+
 @main
 struct SmartWindowControllerApp: App {
+    @StateObject var p = Pre()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if p.showView {
+                ContentView()
+            }
         }
     }
 }

@@ -19,15 +19,16 @@ class IoTDevice: ObservableObject {
     
     
     init() {
-        let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USEast2,
-           identityPoolId:"us-east-2:d7fe918e-a665-4602-af6f-108f1ea04286")
+        let credentialsProvider = AWSCognitoCredentialsProvider(
+            regionType:.USEast2,
+            identityPoolId:"us-east-2:d7fe918e-a665-4602-af6f-108f1ea04286"
+        )
         let configuration = AWSServiceConfiguration(region:.USEast2, credentialsProvider:credentialsProvider)
         AWSServiceManager.default().defaultServiceConfiguration = configuration
         iotManager = AWSIoTManager.default()
         iot = AWSIoT.default()
         
-        let iotEndPoint = AWSEndpoint(
-            urlString: "wss://a31gd9kluhs5xl-ats.iot.us-east-2.amazonaws.com/mqtt")
+        let iotEndPoint = AWSEndpoint(urlString: "wss://a31gd9kluhs5xl-ats.iot.us-east-2.amazonaws.com/mqtt")
         let iotDataConfiguration = AWSServiceConfiguration(
            region: AWSRegionType.USEast2,
            endpoint: iotEndPoint,
