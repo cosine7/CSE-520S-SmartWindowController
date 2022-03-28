@@ -18,13 +18,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section {
-                    if window.status.isRaining {
-                        getImage("cloud.rain", .blue)
-                    } else {
-                        getImage("sun.max", .yellow)
-                    }
-                    
+                Section(header: Text("control")) {
                     Toggle("window1", isOn: $window.isOpen)
                         .onTapGesture {
                             window.publishTopic(!window.isOpen ? 90 : 0)
@@ -36,6 +30,13 @@ struct ContentView: View {
                         window.publishTopic(Int(window.status.windowAngle))
                     }
                         .animation(.linear, value: window.status.windowAngle)
+                }
+                Section(header: Text("weather")) {
+                    if window.status.isRaining {
+                        getImage("cloud.rain", .blue)
+                    } else {
+                        getImage("sun.max", .yellow)
+                    }
                     HStack {
                         Text("Temperature")
                         Spacer()
