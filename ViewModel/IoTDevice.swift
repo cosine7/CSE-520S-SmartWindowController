@@ -26,9 +26,7 @@ class IoTDevice: ObservableObject {
                 return
             }
             DispatchQueue.main.async {
-                self.status.temperature = status.temperature
-                self.status.humidity = status.humidity
-                self.status.isRaining = status.isRaining
+                self.status = status
                 self.isOpen = status.windowAngle > 0
             }
         }

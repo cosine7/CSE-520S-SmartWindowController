@@ -93,6 +93,5 @@ class IoTSetup: ObservableObject {
             onTopic: "sync_start",
             qoS: .messageDeliveryAttemptedAtMostOnce
         )
-        
     }
 }
