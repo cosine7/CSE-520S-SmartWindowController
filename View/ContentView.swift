@@ -27,12 +27,15 @@ struct ContentView: View {
                     
                     Toggle("window1", isOn: $window.isOpen)
                         .onTapGesture {
-//                            print(window.isOpen)
-//                            window.interrupt()
-                            window.publishTopic(!window.isOpen)
+                            window.publishTopic(!window.isOpen ? 90 : 0)
                         }
-//                    Slider(value: $window.status.windowAngle.animation(), in: 0 ... 90)
-//                        .animation(.linear, value: window.status.windowAngle)
+                    Slider(value: $window.status.windowAngle.animation(), in: 0 ... 90) {
+                        if $0 {
+                            return
+                        }
+                        window.publishTopic(Int(window.status.windowAngle))
+                    }
+                        .animation(.linear, value: window.status.windowAngle)
                     HStack {
                         Text("Temperature")
                         Spacer()
