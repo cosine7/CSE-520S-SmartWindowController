@@ -7,32 +7,18 @@
 
 import SwiftUI
 
-//class Pre: ObservableObject {
-//    @Published var showView = false
-//
-//    init() {
-//        delay()
-//    }
-//
-//    private func delay() {
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
-//            self.showView = true
-//        }
-//    }
-//
-//}
-
 @main
 struct SmartWindowControllerApp: App {
-//    @StateObject var p = Pre()
+    @StateObject var iotSetup = IoTSetup()
     
     var body: some Scene {
         WindowGroup {
-//            if p.showView {
-//                ContentView()
-//            }
-            ContentView()
-
+            ZStack {
+                if iotSetup.done {
+                    ContentView(status: iotSetup.status)
+                }
+                Spinner(done: $iotSetup.done).zIndex(999)
+            }
         }
     }
 }

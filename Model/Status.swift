@@ -9,7 +9,7 @@ import Foundation
 
 struct Status: Codable {
     var isRaining: Bool
-    let temperature: Double
+    let temperature: Int
     var windowAngle: Double
-    let humidity: Double
+    let humidity: Int
 }
