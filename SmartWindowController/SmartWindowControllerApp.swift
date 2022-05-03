@@ -9,9 +9,16 @@ import SwiftUI
 
 @main
 struct SmartWindowControllerApp: App {
+    @StateObject var iotSetup = IoTSetup()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ZStack {
+                if iotSetup.done {
+                    ContentView(status: iotSetup.status)
+                }
+                Spinner(done: $iotSetup.done).zIndex(999)
+            }
         }
     }
 }
