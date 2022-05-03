@@ -20,14 +20,14 @@ class IoTSetup: ObservableObject {
     init() {
         let credentialsProvider = AWSCognitoCredentialsProvider(
             regionType:.USEast2,
-            identityPoolId:"us-east-2:d7fe918e-a665-4602-af6f-108f1ea04286"
+            identityPoolId: Secret.identityPoolId
         )
         let configuration = AWSServiceConfiguration(region:.USEast2, credentialsProvider:credentialsProvider)
         AWSServiceManager.default().defaultServiceConfiguration = configuration
         iotManager = AWSIoTManager.default()
         iot = AWSIoT.default()
         
-        let iotEndPoint = AWSEndpoint(urlString: "wss://a31gd9kluhs5xl-ats.iot.us-east-2.amazonaws.com/mqtt")
+        let iotEndPoint = AWSEndpoint(urlString: Secret.AWSEndpoint)
         let iotDataConfiguration = AWSServiceConfiguration(
            region: AWSRegionType.USEast2,
            endpoint: iotEndPoint,
@@ -35,13 +35,7 @@ class IoTSetup: ObservableObject {
        )
         AWSIoTDataManager.register(with: iotDataConfiguration!, forKey: "MyAWSIoTDataManager")
         iotDataManager = AWSIoTDataManager(forKey: "MyAWSIoTDataManager")
-        let csrDictionary = [
-            "commonName": "testApp",
-            "countryName": "US",
-            "organizationName": "cse520s",
-            "organizationalUnitName": "000"
-        ]
-        self.iotManager.createKeysAndCertificate(fromCsr: csrDictionary) {
+        self.iotManager.createKeysAndCertificate(fromCsr: Secret.csrDictionary) {
             response -> Void in
             guard let response = response,
                   let attachPrincipalPolicyRequest = AWSIoTAttachPrincipalPolicyRequest()
@@ -49,7 +43,7 @@ class IoTSetup: ObservableObject {
                 print("fail============================")
                 return
             }
-            attachPrincipalPolicyRequest.policyName = "testSWAppIOTPolicy"
+            attachPrincipalPolicyRequest.policyName = Secret.policyName
             attachPrincipalPolicyRequest.principal = response.certificateArn
 
             // Attach the policy to the certificate

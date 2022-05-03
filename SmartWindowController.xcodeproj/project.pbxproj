@@ -11,6 +11,7 @@
 		2B7E06C6E1D2F5FD9A9DBCED /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F0B9A024FDD7ECC7A588A90 /* awsconfiguration.json */; };
 		502E699227C62EAC00F42D30 /* AWSIoT in Frameworks */ = {isa = PBXBuildFile; productRef = 502E699127C62EAC00F42D30 /* AWSIoT */; };
 		5068A14E27C6FC9A00E69AF1 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5068A14D27C6FC9A00E69AF1 /* Status.swift */; };
+		50A54A262821C2D300BD0A9B /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A54A252821C2D300BD0A9B /* Secret.swift */; };
 		50E1B26027F137DF00207A1C /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E1B25F27F137DF00207A1C /* Spinner.swift */; };
 		50E1B26227F1387B00207A1C /* IoTSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E1B26127F1387B00207A1C /* IoTSetup.swift */; };
 		50FD7C6027C5A5D20034CA18 /* SmartWindowControllerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FD7C5F27C5A5D20034CA18 /* SmartWindowControllerApp.swift */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		1F0B9A024FDD7ECC7A588A90 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		5068A14D27C6FC9A00E69AF1 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		50A54A252821C2D300BD0A9B /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		50E1B25F27F137DF00207A1C /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
 		50E1B26127F1387B00207A1C /* IoTSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IoTSetup.swift; sourceTree = "<group>"; };
 		50FD7C5C27C5A5D20034CA18 /* SmartWindowController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartWindowController.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,9 +83,18 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		50A54A242821C2B800BD0A9B /* Secret */ = {
+			isa = PBXGroup;
+			children = (
+				50A54A252821C2D300BD0A9B /* Secret.swift */,
+			);
+			path = Secret;
+			sourceTree = "<group>";
+		};
 		50FD7C5327C5A5D20034CA18 = {
 			isa = PBXGroup;
 			children = (
+				50A54A242821C2B800BD0A9B /* Secret */,
 				5068A14C27C6FC6D00E69AF1 /* Model */,
 				5068A14B27C6E61F00E69AF1 /* ViewModel */,
 				5068A14A27C6E61400E69AF1 /* View */,
@@ -198,6 +209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50FD7C6227C5A5D20034CA18 /* ContentView.swift in Sources */,
+				50A54A262821C2D300BD0A9B /* Secret.swift in Sources */,
 				50FD7C8027C6077B0034CA18 /* IoTDevice.swift in Sources */,
 				50E1B26227F1387B00207A1C /* IoTSetup.swift in Sources */,
 				50FD7C6027C5A5D20034CA18 /* SmartWindowControllerApp.swift in Sources */,
