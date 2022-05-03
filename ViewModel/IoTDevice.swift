@@ -12,6 +12,7 @@ class IoTDevice: ObservableObject {
     @Published var isOpen: Bool
     @Published var status: Status
     private var isPublishing = false
+    private var time: Date?
     
     private let iotDataManager = AWSIoTDataManager(forKey: "MyAWSIoTDataManager")
     
@@ -31,7 +32,9 @@ class IoTDevice: ObservableObject {
             }
         }
         iotDataManager.subscribe(toTopic: "resume", qoS: .messageDeliveryAttemptedAtMostOnce) {
-            _ in self.isPublishing = false
+            _ in
+            self.isPublishing = false
+            print(self.time?.timeIntervalSinceNow ?? 0.0)
         }
     }
     
@@ -44,6 +47,7 @@ class IoTDevice: ObservableObject {
         else {
             return
         }
+        time = Date()
         iotDataManager.publishString(
             message,
             onTopic: "remote_control",

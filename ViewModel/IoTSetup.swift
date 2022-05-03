@@ -15,6 +15,7 @@ class IoTSetup: ObservableObject {
     private let iot: AWSIoT
     private let iotManager: AWSIoTManager
     var status = Status(isRaining: false, temperature: 0, windowAngle: 0, humidity: 0)
+    private var time: Date?
     
     init() {
         let credentialsProvider = AWSCognitoCredentialsProvider(
@@ -86,8 +87,10 @@ class IoTSetup: ObservableObject {
                 self.status = status
                 self.iotDataManager.unsubscribeTopic("sync_end")
                 self.done = true
+                print(self.time?.timeIntervalSinceNow ?? 0.0)
             }
         }
+        time = Date()
         iotDataManager.publishString(
             "{}",
             onTopic: "sync_start",
